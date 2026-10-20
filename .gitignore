@@ -59,3 +59,8 @@ htmlcov/
 # Operating System
 .DS_Store
 Thumbs.db
+
+#Misc
+project.png
+LATER.md
+AGENTIC_AI_ROADMAP.md
