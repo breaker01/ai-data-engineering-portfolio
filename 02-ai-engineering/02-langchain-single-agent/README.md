@@ -18,8 +18,9 @@ Autonomous single-agent implementation built with LangChain, featuring tool call
 ├── notebooks/
 │   ├── langchain_notes.ipynb
 │   └── ENVIRONMENT_SETUP.md
-├── main.py
+├── app.py
 ├── requirements.txt
+├── runtime.txt
 └── README.md
 ```
 
@@ -34,10 +35,13 @@ Autonomous single-agent implementation built with LangChain, featuring tool call
 
 2. **Configure environment:**
    ```bash
-   export OPENAI_API_KEY="your-api-key"
+   export GOOGLE_API_KEY="your-api-key"
+   export TAVILY_API_KEY="your-api-key"
+   export WEATHERSTACK_API_KEY="your-api-key"
+   
    ```
 
 3. **Run the agent:**
    ```bash
-   python main.py
+   python app.py
    ```
