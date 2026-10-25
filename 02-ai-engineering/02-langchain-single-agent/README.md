@@ -4,19 +4,20 @@ Autonomous single-agent implementation built with LangChain, featuring tool call
 
 ---
 
-## 📌 Overview
+## Overview
 
 1. **Learning & Experiments:** LangChain primitives, prompt templates, LLM integration, and tool binding documented in `notebooks/langchain_notes.ipynb`.
 2. **Agent Application:** Runnable single-agent implementation with custom tools and memory.
 
 ---
 
-## 📂 Structure
+## Structure
 
 ```text
 02-langchain-single-agent/
 ├── notebooks/
-│   └── langchain_notes.ipynb
+│   ├── langchain_notes.ipynb
+│   └── ENVIRONMENT_SETUP.md
 ├── main.py
 ├── requirements.txt
 └── README.md
@@ -24,7 +25,7 @@ Autonomous single-agent implementation built with LangChain, featuring tool call
 
 ---
 
-## 🚀 Setup & Execution
+## Setup & Execution
 
 1. **Install dependencies:**
    ```bash
