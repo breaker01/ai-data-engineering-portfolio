@@ -23,7 +23,7 @@ System design for production LLM architectures: schema validation, tool use, cyc
 * **Location:** [`02-ai-engineering/`](./02-ai-engineering/)
   * [X] [01 - Pydantic Validation &amp; Schema Enforcement](./02-ai-engineering/01-pydantic-validation/)
   * [X] [02 - LangChain Single-Agent System](./02-ai-engineering/02-langchain-single-agent/)
-  * [ ] 03 - Multi-Agent Collaborative Systems
+  * [X] [03 - Multi-Agent Collaborative Research System](./02-ai-engineering/03-multi_Agent-research-system/)
   * [ ] 04 - LangGraph Workflows & Cyclical State Machines
   * [ ] 05 - Production Agentic Chatbot (Persistence, HITL, Streaming & Docker)
   * [ ] 06 - Model Context Protocol (MCP) & Supervisor Architectures
