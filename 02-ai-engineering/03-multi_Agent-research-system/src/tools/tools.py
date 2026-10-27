@@ -42,7 +42,6 @@ def scrape_url(url: str) -> str:
     Scrape and extract clean readable content from a URL.
     Uses multiple extraction strategies for better reliability.
     """
-
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "

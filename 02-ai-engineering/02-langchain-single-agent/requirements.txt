@@ -1,11 +1,10 @@
 langchain==0.1.16
 langchain-community==0.0.32
 langchain-core==0.1.42
-langchain-google-genai==1.0.2
-langsmith==0.1.147
+langchain-google-genai
 requests==2.31.0
 tavily-python
 python-dotenv
-langchainhub==0.1.21
+langchainhub
 streamlit
-certifi
+langchain-classic
