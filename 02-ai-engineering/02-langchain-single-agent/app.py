@@ -4,12 +4,24 @@ import certifi
 import requests
 import streamlit as st
 
+from langsmith import Client
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain.tools import tool
-from langchain.agents import create_react_agent, AgentExecutor
-from langchain import hub
+
+try:
+    from langchain_classic.agents import create_react_agent, AgentExecutor
+except ImportError:
+    from langchain.agents import create_react_agent, AgentExecutor
+
+try:
+    from langchain import hub
+except ImportError:
+    try:
+        from langchain_classic import hub
+    except ImportError:
+        import langchainhub as hub
 
 
 st.set_page_config(
@@ -23,7 +35,9 @@ st.markdown("Search + Weather AI Agent using LangChain")
 
 os.environ["SSL_CERT_FILE"] = certifi.where()
 
-load_dotenv()
+# Explicitly load .env relative to this file
+_env_path = os.path.join(os.path.dirname(__file__), ".env")
+load_dotenv(_env_path, override=True)
 
 def get_secret(name):
     try:
@@ -83,7 +97,14 @@ if st.button("Run Agent"):
         st.warning("Please enter a query.")
 
     elif not all([GEMINI_API_KEY, TAVILY_API_KEY, WEATHERSTACK_API_KEY]):
-        st.error("One or more API keys are missing. Check Streamlit Secrets.")
+        missing = [
+            k for k, v in [
+                ("GOOGLE_API_KEY", GEMINI_API_KEY),
+                ("TAVILY_API_KEY", TAVILY_API_KEY),
+                ("WEATHERSTACK_API_KEY", WEATHERSTACK_API_KEY),
+            ] if not v
+        ]
+        st.error(f"Missing API key(s): {', '.join(missing)}. Check your .env file or Streamlit Secrets.")
 
     else:
         with st.spinner("Agent is thinking..."):
@@ -96,12 +117,21 @@ if st.button("Run Agent"):
                 tools = [search_tool, get_weather_data]
 
                 model = ChatGoogleGenerativeAI(
-                    model="gemini-1.5-flash",
+                    model="gemini-3.5-flash-lite",
                     google_api_key=GEMINI_API_KEY,
                     temperature=0
                 )
+# model = ChatGoogleGenerativeAI(
+#     model="gemini-3.5-flash-lite",
+#     google_api_key=GEMINI_API_KEY,
+#     temperature=1.0,  
+#     max_retries=2,
+# )
 
-                prompt = hub.pull("hwchase17/react")
+# result = model.invoke("how much is 5x5 ? "
+
+                client = Client()
+                prompt = client.pull_prompt("hwchase17/react", dangerously_pull_public_prompt=True)
 
                 agent = create_react_agent(
                     llm=model,

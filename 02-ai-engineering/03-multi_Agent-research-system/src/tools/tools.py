@@ -54,14 +54,8 @@ def scrape_url(url: str) -> str:
 
     try:
         # ── Fetch page ─────────────────────────────────────
-        response = requests.get(
-            url,
-            headers=headers,
-            timeout=15
-        )
-
+        response = requests.get(url,headers=headers,timeout=15)
         response.raise_for_status()
-
         html = response.text
 
         # ──────────────────────────────────────────────────

@@ -6,28 +6,29 @@ from src.tools.tools import web_search,scrape_url
 from dotenv import load_dotenv
 import os
 
-load_dotenv
+load_dotenv()
 
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+GEMINI_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 # model initialization
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
+    model="gemini-1.5-flash-lates",
     google_api_key=GEMINI_API_KEY,
-    temperature=0
+    temperature=0,
+    max_retries=2,
 )
 
 # Search Agent
 def build_search_agent():
     return create_agent(
-        llm=llm,
+        model=llm,
         tools=[web_search]
     )
     
 #reader agent
 def build_reader_agent():
     return create_agent(
-        llm=llm,
+        model=llm,
         tools=[scrape_url],
     )
 
