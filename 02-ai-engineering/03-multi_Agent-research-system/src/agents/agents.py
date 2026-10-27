@@ -18,11 +18,17 @@ llm = ChatGoogleGenerativeAI(
     max_retries=2,
 )
 
+SEARCH_SYSTEM_PROMPT = """You are an expert research discovery agent.
+Search the web for the requested topic. 
+CRITICAL REQUIREMENT:
+You MUST explicitly list all source URLs and their titles in your final response under a 'Sources' section so that downstream scraping agents can visit and scrape them. Never omit the URLs."""
+
 # Search Agent
 def build_search_agent():
     return create_agent(
         model=llm,
-        tools=[web_search]
+        tools=[web_search],
+        system_prompt=SEARCH_SYSTEM_PROMPT
     )
     
 #reader agent
