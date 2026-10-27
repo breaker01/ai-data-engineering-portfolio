@@ -33,7 +33,7 @@ def build_reader_agent():
     )
 
 writer_prompt = ChatPromptTemplate.from_messages([
-    ("system","You are an Expert research writer. Write clear, structured and isnightful reports."),
+    ("system","You are an Expert research writer. Write clear, structured and insightful reports."),
     ("human","""Write a detailed research report on the topic below.
      
 Topic: {topic}

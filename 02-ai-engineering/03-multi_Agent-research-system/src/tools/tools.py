@@ -31,7 +31,7 @@ def web_search(query: str) -> str:
     
     for r in results['results']:
         out.append(
-            f"Title: {r['title']}\n URL: {r['url']}\nSnipper: {r['content'][:300]}\n"
+            f"Title: {r['title']}\n URL: {r['url']}\nSnippet: {r['content'][:300]}\n"
         )
     return "\n-----\n".join(out)
 
