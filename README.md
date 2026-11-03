@@ -29,11 +29,3 @@ System design for production LLM architectures: schema validation, tool use, cyc
   * [ ] 06 - Model Context Protocol (MCP) & Supervisor Architectures
   * [ ] 07 - Production Agent Reliability (Harnesses, Evals & LLM Gateways)
   * [ ] 08 - Advanced & Self-Correcting RAG (CRAG, Self-RAG & GraphRAG)
-
----
-
-### Phase 3: Data Engineering & Pipelines
-
-Analytical SQL, batch and streaming ETL, pipeline orchestration, and data transformation architectures.
-
-* **Location:** `03-data-engineering/`
